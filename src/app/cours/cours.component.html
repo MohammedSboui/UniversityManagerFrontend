@@ -1,0 +1,60 @@
+<div class="Cours">
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Example icon button with a plus one icon"
+    class="Cours__addBtn"
+    (click)="navigate(['cours', 'nouveau'])"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <table
+    *ngIf="!isLoading"
+    mat-table
+    [dataSource]="cours || []"
+    matSort
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="codeCours">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Code Cours</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="coursMenu">
+          {{ element.codeCours }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="libelleCours">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Libelle cours</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="coursMenu">
+          {{ element.libelleCours }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="salleCours">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Salle de cours</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="coursMenu">
+          {{ element.salleCours }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      (click)="setSelectedCours(row)"
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+  <mat-menu #coursMenu="matMenu">
+    <button (click)="handleEdit()" mat-menu-item>
+      <mat-icon>edit</mat-icon>Modifier
+    </button>
+    <button (click)="handleSupprimer()" class="menu__deleteBtn" mat-menu-item>
+      <mat-icon>delete</mat-icon>Supprimer
+    </button>
+  </mat-menu>
+</div>

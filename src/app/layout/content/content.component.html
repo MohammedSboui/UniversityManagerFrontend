@@ -1,0 +1,44 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    class="Content__menu"
+    mode="side"
+    [disableClose]="true"
+    [opened]="true"
+  >
+    <mat-list>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['etudiant'])" mat-button>Etudiants</button>
+      </mat-list-item>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['departement'])" mat-button>
+          Departements
+        </button>
+      </mat-list-item>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['groupe'])" mat-button>Groupes</button>
+      </mat-list-item>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['enseignant'])" mat-button>
+          Enseignants
+        </button>
+      </mat-list-item>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['universite'])" mat-button>
+          Universite
+        </button>
+      </mat-list-item>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['salle'])" mat-button>Salles</button>
+      </mat-list-item>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['seance'])" mat-button>Seances</button>
+      </mat-list-item>
+      <mat-list-item class="Content__item">
+        <button (click)="navigate(['cours'])" mat-button>Cours</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="AppContent">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

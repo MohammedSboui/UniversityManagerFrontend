@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom salle</mat-label>
+        <input
+          matInput
+          placeholder="Nom salle .."
+          [(ngModel)]="salle.nomSalle"
+          name="nomSalle"
+          required
+          minlength="3"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Capacité salle</mat-label>
+        <input
+          matInput
+          placeholder="Capacité salle .."
+          [(ngModel)]="salle.cpctSalle"
+          minlength="1"
+          required
+          type="number"
+          name="cpctSalle"
+        />
+      </mat-form-field>
+
+      <button
+        [disabled]="isDisabled"
+        (click)="handleNewSalle()"
+        type="submit"
+        mat-raised-button
+        mat-button
+        color="primary"
+      >
+        Créer
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

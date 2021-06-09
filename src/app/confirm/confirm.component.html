@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content>
+  <div class="Confirm__content">
+    <p>{{ content }}</p>
+    <button (click)="_confirm()" mat-flat-button color="primary">
+      Confirmer
+    </button>
+    <button (click)="_cancel()" mat-flat-button>Annuler</button>
+  </div>
+</div>

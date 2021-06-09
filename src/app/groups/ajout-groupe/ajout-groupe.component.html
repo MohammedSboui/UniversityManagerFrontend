@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Niveau Groupe</mat-label>
+        <input
+          matInput
+          placeholder="Niveau groupe .."
+          [(ngModel)]="groupe.niveauGroupe"
+          dd
+          name="niveauGroupe"
+          required
+          minlength="1"
+        />
+      </mat-form-field>
+
+      <button
+        [disabled]="isDisabled"
+        (click)="handleNewGroupe()"
+        type="submit"
+        mat-raised-button
+        mat-button
+        color="primary"
+      >
+        Créer
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,63 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom étudiant</mat-label>
+        <input
+          matInput
+          placeholder="Nom étudiant .."
+          [(ngModel)]="etudiant.nomEt"
+          dd
+          name="nomEt"
+          required
+          minlength="3"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Prénom étudiant</mat-label>
+        <input
+          matInput
+          placeholder="Prénom étudiant .."
+          [(ngModel)]="etudiant.prenomEt"
+          minlength="3"
+          required
+          name="prenomEt"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Adresse</mat-label>
+        <input
+          required
+          matInput
+          placeholder="Adresse .."
+          [(ngModel)]="etudiant.adrEt"
+          name="prenomEt"
+        />
+      </mat-form-field>
+
+      <div class="example-full-width">
+        <app-groupes-select
+          label="Groupes"
+          (groupeChange)="handleGroupeChange($event)"
+          [selectedKey]="etudiant.groupe?.idGroupe"
+        ></app-groupes-select>
+      </div>
+
+      <button
+        [disabled]="isDisabled"
+        (click)="handleNewEtudiant()"
+        type="submit"
+        mat-raised-button
+        mat-button
+        color="primary"
+      >
+        Créer
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

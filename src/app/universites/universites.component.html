@@ -1,0 +1,62 @@
+<div class="Universite">
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Example icon button with a plus one icon"
+    class="Universite__addBtn"
+    (click)="navigate(['universite', 'nouveau'])"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <table
+    *ngIf="!isLoading"
+    mat-table
+    [dataSource]="universites || []"
+    matSort
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="codeUni">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="universiteMenu">
+          {{ element.codeUni }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nomUni">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom université</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="universiteMenu">
+          {{ element.nomUni }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adresseSite">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Adresse université
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="universiteMenu">
+          {{ element.adresseSite }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      (click)="setSelectedUniversite(row)"
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+  <mat-menu #universiteMenu="matMenu">
+    <button (click)="handleEdit()" mat-menu-item>
+      <mat-icon>edit</mat-icon>Modifier
+    </button>
+    <button (click)="handleSupprimer()" class="menu__deleteBtn" mat-menu-item>
+      <mat-icon>delete</mat-icon>Supprimer
+    </button>
+  </mat-menu>
+</div>

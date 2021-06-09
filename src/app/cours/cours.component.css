@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+}
+
+.Cours {
+  position: relative;
+}
+
+.Cours__addBtn {
+  margin: 5px;
+  float: right;
+}
+
+.menu__deleteBtn {
+  background-color: #c2185b;
+  margin: 0;
+}
+
+.Cours__cellBtn {
+  width: 100%;
+}

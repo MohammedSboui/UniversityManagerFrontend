@@ -1,0 +1,60 @@
+<div class="Departement">
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Example icon button with a plus one icon"
+    class="Departement__addBtn"
+    (click)="navigate(['departement', 'nouveau'])"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <table
+    *ngIf="!isLoading"
+    mat-table
+    [dataSource]="departements || []"
+    matSort
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="codeDep">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="departementMenu">
+          {{ element.codeDep }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="libelleDep">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Libellé</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="departementMenu">
+          {{ element.libelleDep }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="universite">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Université</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="departementMenu">
+          {{ element.universite?.nomUri }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      (click)="setSelectedDepartement(row)"
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+  <mat-menu #departementMenu="matMenu">
+    <button (click)="handleEdit()" mat-menu-item>
+      <mat-icon>edit</mat-icon>Modifier
+    </button>
+    <button (click)="handleSupprimer()" class="menu__deleteBtn" mat-menu-item>
+      <mat-icon>delete</mat-icon>Supprimer
+    </button>
+  </mat-menu>
+</div>

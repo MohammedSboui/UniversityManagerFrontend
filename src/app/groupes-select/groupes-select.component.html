@@ -1,0 +1,12 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <mat-select
+    [(ngModel)]="selected"
+    (selectionChange)="handleSelectionChange($event)"
+    name="groupes"
+  >
+    <mat-option *ngFor="let groupe of groupes" [value]="groupe">
+      {{ groupe.niveauGroupe }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

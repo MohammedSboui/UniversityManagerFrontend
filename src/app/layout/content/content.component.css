@@ -1,0 +1,19 @@
+.AppContent {
+  height: calc(100vh - 100px);
+  background-color: white;
+  color: black;
+  padding: 1rem;
+}
+
+.Content__menu {
+  width: 18%;
+}
+
+.Content__item {
+  padding: 0;
+}
+
+.Content__item button {
+  width: 100%;
+  text-align: left;
+}

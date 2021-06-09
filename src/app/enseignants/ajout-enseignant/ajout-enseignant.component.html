@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom enseignant</mat-label>
+        <input
+          matInput
+          placeholder="Nom enseignant .."
+          [(ngModel)]="enseignant.nomEns"
+          name="nomEns"
+          required
+          minlength="3"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Prénom enseignant</mat-label>
+        <input
+          matInput
+          placeholder="Prénom enseignant .."
+          [(ngModel)]="enseignant.prenomEns"
+          minlength="3"
+          required
+          name="prenomEns"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Adresse</mat-label>
+        <input
+          required
+          matInput
+          placeholder="Adresse .."
+          [(ngModel)]="enseignant.adrEns"
+          name="adrEns"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Diplome</mat-label>
+        <input
+          required
+          matInput
+          placeholder="Diplome .."
+          [(ngModel)]="enseignant.diplomeEns"
+          name="diplomeEns"
+        />
+      </mat-form-field>
+
+      <button
+        [disabled]="isDisabled"
+        (click)="handleNewEnseignant()"
+        type="submit"
+        mat-raised-button
+        mat-button
+        color="primary"
+      >
+        Créer
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

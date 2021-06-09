@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+}
+
+.Seance {
+  position: relative;
+}
+
+.Seance__addBtn {
+  margin: 5px;
+  float: right;
+}
+
+.menu__deleteBtn {
+  background-color: #c2185b;
+  margin: 0;
+}
+
+.Seance__cellBtn {
+  width: 100%;
+}

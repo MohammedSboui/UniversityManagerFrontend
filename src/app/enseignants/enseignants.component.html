@@ -1,0 +1,78 @@
+<div class="Enseignant">
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Example icon button with a plus one icon"
+    class="Enseignant__addBtn"
+    (click)="navigate(['enseignant', 'nouveau'])"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <table
+    *ngIf="!isLoading"
+    mat-table
+    [dataSource]="enseignants || []"
+    matSort
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="matricule">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="enseignantMenu">
+          {{ element.matricule }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nomEns">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="enseignantMenu">
+          {{ element.nomEns }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="prenomEns">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Prenom</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="enseignantMenu">
+          {{ element.prenomEns }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adrEns">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Adresse</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="enseignantMenu">
+          {{ element.adrEns }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="diplomeEns">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Diplome</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="enseignantMenu">
+          {{ element.diplomeEns }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      (click)="setSelectedEnseignant(row)"
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+  <mat-menu #enseignantMenu="matMenu">
+    <button (click)="handleEdit()" mat-menu-item>
+      <mat-icon>edit</mat-icon>Modifier
+    </button>
+    <button (click)="handleSupprimer()" class="menu__deleteBtn" mat-menu-item>
+      <mat-icon>delete</mat-icon>Supprimer
+    </button>
+  </mat-menu>
+</div>

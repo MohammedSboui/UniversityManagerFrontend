@@ -1,0 +1,75 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Durée séance</mat-label>
+        <input
+          matInput
+          placeholder="Durée séance .."
+          [(ngModel)]="seance.dureSeance"
+          type="number"
+          name="dureSeance"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Date séance</mat-label>
+        <input
+          matInput
+          placeholder="Date séance .."
+          [(ngModel)]="seance.sateSeance"
+          minlength="3"
+          required
+          name="sateSeance"
+        />
+      </mat-form-field>
+
+      <div class="example-full-width">
+        <app-enseignant-select
+          label="Enseignant"
+          (enseignantChange)="handleEnseignantChange($event)"
+          [selectedKey]="seance.enseignant?.matricule"
+        ></app-enseignant-select>
+      </div>
+
+      <div class="example-full-width">
+        <app-salle-select
+          label="Salle"
+          (salleChange)="handleSalleChange($event)"
+          [selectedKey]="seance.salle?.numSalle"
+        ></app-salle-select>
+      </div>
+
+      <div class="example-full-width">
+        <app-groupes-select
+          label="Groupes"
+          (groupeChange)="handleGroupeChange($event)"
+          [selectedKey]="seance.groupe?.idGroupe"
+        ></app-groupes-select>
+      </div>
+
+      <div class="example-full-width">
+        <app-cours-select
+          label="Cours"
+          (coursChange)="handleCoursChange($event)"
+          [selectedKey]="seance.groupe?.idGroupe"
+        ></app-cours-select>
+      </div>
+
+      <button
+        [disabled]="isDisabled"
+        (click)="handleNewSeance()"
+        type="submit"
+        mat-raised-button
+        mat-button
+        color="primary"
+      >
+        Créer
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,78 @@
+<div class="Etudiant">
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Example icon button with a plus one icon"
+    class="Etudiant__addBtn"
+    (click)="navigate(['etudiant', 'nouveau'])"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <table
+    *ngIf="!isLoading"
+    mat-table
+    [dataSource]="etudiants || []"
+    matSort
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="numEt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="etudiantMenu">
+          {{ element.numEt }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nomEt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="etudiantMenu">
+          {{ element.nomEt }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="prenomEt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Prenom</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="etudiantMenu">
+          {{ element.prenomEt }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adrEt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Adresse</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="etudiantMenu">
+          {{ element.adrEt }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="groupe">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Groupe</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button [matMenuTriggerFor]="etudiantMenu">
+          {{ element.groupe?.niveauGroupe }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      (click)="setSelectedEtudiant(row)"
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></tr>
+  </table>
+  <mat-menu #etudiantMenu="matMenu">
+    <button (click)="handleEdit()" mat-menu-item>
+      <mat-icon>edit</mat-icon>Modifier
+    </button>
+    <button (click)="handleSupprimer()" class="menu__deleteBtn" mat-menu-item>
+      <mat-icon>delete</mat-icon>Supprimer
+    </button>
+  </mat-menu>
+</div>

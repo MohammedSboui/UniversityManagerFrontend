@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom universite</mat-label>
+        <input
+          matInput
+          placeholder="Nom université .."
+          [(ngModel)]="universite.nomUni"
+          name="nomUri"
+          required
+          minlength="3"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Adresse université</mat-label>
+        <input
+          matInput
+          placeholder="Adresse université .."
+          [(ngModel)]="universite.adresseSite"
+          minlength="3"
+          required
+          name="adresseSite"
+        />
+      </mat-form-field>
+
+      <button
+        [disabled]="isDisabled"
+        (click)="handleNewUniversite()"
+        type="submit"
+        mat-raised-button
+        mat-button
+        color="primary"
+      >
+        Créer
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
